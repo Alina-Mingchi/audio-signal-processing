@@ -4,6 +4,16 @@ from torch.utils.data import Dataset
 import pandas as pd
 import torchaudio
 
+## TO DOWNLOAD THE DATA
+# import soundata
+
+# dataset = soundata.initialize('urbansound8k')
+# dataset.download()  # download the dataset
+# dataset.validate()  # validate that all the expected files are there
+
+# example_clip = dataset.choice_clip()  # choose a random example clip
+# print(example_clip)  # see the available data
+
 
 class UrbanSoundDataset(Dataset):
 
@@ -31,8 +41,8 @@ class UrbanSoundDataset(Dataset):
 
 
 if __name__ == "__main__":
-    ANNOTATIONS_FILE = "/home/valerio/datasets/UrbanSound8K/metadata/UrbanSound8K.csv"
-    AUDIO_DIR = "/home/valerio/datasets/UrbanSound8K/audio"
+    ANNOTATIONS_FILE = "/home/mhou/sound_datasets/urbansound8k/metadata/UrbanSound8K.csv"
+    AUDIO_DIR = "/home/mhou/sound_datasets/urbansound8k/audio"
     usd = UrbanSoundDataset(ANNOTATIONS_FILE, AUDIO_DIR)
     print(f"There are {len(usd)} samples in the dataset.")
     signal, label = usd[0]
