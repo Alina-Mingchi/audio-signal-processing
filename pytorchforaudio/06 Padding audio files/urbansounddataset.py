@@ -69,8 +69,8 @@ class UrbanSoundDataset(Dataset):
 
 
 if __name__ == "__main__":
-    ANNOTATIONS_FILE = "/home/valerio/datasets/UrbanSound8K/metadata/UrbanSound8K.csv"
-    AUDIO_DIR = "/home/valerio/datasets/UrbanSound8K/audio"
+    ANNOTATIONS_FILE = "/home/mhou/sound_datasets/urbansound8k/metadata/UrbanSound8K.csv"
+    AUDIO_DIR = "/home/mhou/sound_datasets/urbansound8k/audio"
     SAMPLE_RATE = 22050
     NUM_SAMPLES = 22050
 
@@ -87,6 +87,6 @@ if __name__ == "__main__":
                             SAMPLE_RATE,
                             NUM_SAMPLES)
     print(f"There are {len(usd)} samples in the dataset.")
-    signal, label = usd[1]
-
+    signal, label = usd[1] # cut because original signal is longer, and triggered _cut_if_necesary()
+    signal0, label0 = usd[0] # right padded because original signal is shorter, and triggered _right_pad_if_necessary()
 
